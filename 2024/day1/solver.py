@@ -1,29 +1,22 @@
+from aoc_utils import *
 from collections import Counter, defaultdict
 
 with open("input.txt") as fd:
     puzzle = fd.readlines()
 
 def solve1():
-    data = [i.split() for i in puzzle]
-
-    firstline = [i[0] for i in data]
-    secondline = [i[1] for i in data]
-
-    sortfirst = sorted(firstline)
-    sortsecond = sorted(secondline)
-
-    # I probably could use itertools, but I don't want to
-    diffs = [abs(int(i)-int(j)) for i, j in (sortfirst, sortsecond)]
-
-    return sum(diffs)
+    return sum(map(diff, *map(sorted, rotate(listsplit(puzzle)))))
 
 def solve2():
-    data = [i.split() for i in puzzle]
+    data = listsplit(puzzle)
+    data = intify(data)
 
     answer = defaultdict(int)
 
-    firstline = [int(i[0]) for i in data]
-    secondline = Counter([int(i[1]) for i in data])
+    rotated = rotate(data)
+
+    firstline = rotated[0]
+    secondline = Counter(rotated[1])
 
     for firstnum in firstline:
         answer[firstnum] += secondline[firstnum] * firstnum

@@ -1,5 +1,6 @@
 import operator
 from functools import reduce
+from aoc_utils import *
 
 data = {}
 
@@ -48,7 +49,7 @@ def p2():
 
     psets = []
     for game in fewgame.values():
-        psets.append(reduce(operator.mul, game.values()))
+        psets.append(mulall(game.values()))
 
     return sum(psets)
 
