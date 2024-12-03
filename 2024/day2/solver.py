@@ -9,7 +9,7 @@ def linesafe(line):
         return False
 
     for cnt, i in enumerate(line):
-        if cnt == 1: continue
+        if cnt == 0: continue
 
         diff = abs(int(line[cnt-1]) - int(i))
 
