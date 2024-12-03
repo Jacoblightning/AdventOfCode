@@ -18,8 +18,6 @@ import re
 # have a link. https://regex101.com/
 
 
-
-
 def p1(data):
     pass
     return data
