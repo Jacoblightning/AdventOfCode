@@ -4,8 +4,16 @@
 import operator
 import sys
 from functools import reduce
+
 sys.setrecursionlimit(10000)
 
+ASCII_NUMBERS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+ASCII_NUMBERS_OR = "|".join(ASCII_NUMBERS)
+
+ANY_TO_NUM = {}
+ANY_TO_NUM.update({i:c for c,i in enumerate(ASCII_NUMBERS)})
+ANY_TO_NUM.update({str(i):i for i in range(10)})
+ANY_TO_NUM.update({i:i for i in range(10)})
 
 def diff(x, y):
     return abs(int(x)-int(y))
@@ -18,19 +26,13 @@ def mulall(*args):
     return reduce(operator.mul, tored)
 
 def listsplit(list_):
-    return [str(i).split() for i in list_]
-
+    return list(map(str.split, map(str, list_)))
 
 def get(list_, x, val):
-    if len(list_) > int(x):
-        return list_[x]
-    return val
+    return list_[x] if len(list_) > int(x) else val
 
 def rotate(list_):
-    newlist = []
-    for j in range(len(list_[0])):
-        newlist.append([get(i, j, None) for i in list_])
-    return newlist
+    return list(zip(*list_))
 
 def intify(data):
     if isinstance(data, str):
