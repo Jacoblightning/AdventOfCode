@@ -1,28 +1,28 @@
+from collections import Counter
+from curses.ascii import isdigit
+
+from aoc_utils import *
+
 with open("input.txt") as fd:
     puzzle = fd.readlines()
 
-data = [i.split() for i in puzzle]
+data = listsplit(puzzle)
 
 def linesafe(line):
-    # Right, we can sort
     if not (line == sorted(line) or line == sorted(line, reverse=True)):
         return False
 
     for cnt, i in enumerate(line):
         if cnt == 0: continue
 
-        diff = abs(int(line[cnt-1]) - int(i))
+        diff_ = diff(line[cnt-1], i)
 
-        if not 0 < diff < 4:
+        if not 0 < diff_ < 4:
             return False
     return True
 
 def solve1():
-    safe = 0
-    for line in data:
-        if linesafe(line):
-            safe += 1
-    return safe
+    return Counter(linesafe(line) for line in data)[True]
 
 
 
