@@ -12,12 +12,12 @@ import re
 # Uncomment if needed
 #from hashlib import sha1, sha256, sha512, md5
 
+from aoc_utils import *
+
 # Tips:
 # You want re.search, not re.match
 # Consider re.finditer over looping through re.findall
 # have a link. https://regex101.com/
-
-
 
 
 def p1(data):

@@ -12,12 +12,8 @@ def solve1():
     sortfirst = sorted(firstline)
     sortsecond = sorted(secondline)
 
-    bysize = zip(sortfirst, sortsecond)
-
-    diffs = []
-
     # I probably could use itertools, but I don't want to
-    diffs = [abs(int(i)-int(j)) for i, j in bysize]
+    diffs = [abs(int(i)-int(j)) for i, j in (sortfirst, sortsecond)]
 
     return sum(diffs)
 
