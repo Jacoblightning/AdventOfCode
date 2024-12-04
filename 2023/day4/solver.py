@@ -27,13 +27,25 @@ from aoc_utils import *
 # If lines was called datalines and I typed "d", data would probably show up first in autocomplete.
 def p1(data, lines):
     """ Part 1 Solution"""
-    pass
-    return data
+    nums = [i.split("|") for i in lines][:-1]
+
+    rot = rotate(nums)
+    ours = [i.split() for i in rot[1]]
+    winning = [j.split() for j in [i.split(":")[1] for i in rot[0]]]
+    total = 0
+    for ours, winning in zip(ours, winning):
+        ourwinning = 0
+        for our in ours:
+            if our in winning:
+                ourwinning += 1
+        if ourwinning > 0:
+            total += 2 ** (ourwinning-1)
+    return total
 
 def p2(data, lines):
     """ Part 2 Solution"""
     pass
-    return data
+    return
 
 def main():
     """ Run Solutions"""
