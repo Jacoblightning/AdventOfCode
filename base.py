@@ -8,6 +8,7 @@ from itertools import *
 from functools import partial, reduce, lru_cache
 from operator import *
 from datetime import *
+from string import *
 from io import *
 from ctypes import *
 import re
@@ -21,7 +22,7 @@ from aoc_utils import *
 # Consider re.finditer over looping through re.findall
 # have a link. https://regex101.com/
 
-# We call it lines instaed of datalines so that they start with different letters.
+# We call it lines instead of datalines so that they start with different letters.
 # This is important so that when typing "d" for autocomplete, it will only show the one we want.
 # If lines was called datalines and I typed "d", data would probably show up first in autocomplete.
 def p1(data, lines):

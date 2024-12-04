@@ -4,6 +4,7 @@
 import operator
 import sys
 from functools import reduce
+from string import printable, ascii_letters
 
 sys.setrecursionlimit(10000)
 
@@ -14,6 +15,8 @@ ANY_TO_NUM = {}
 ANY_TO_NUM.update({i:c for c,i in enumerate(ASCII_NUMBERS)})
 ANY_TO_NUM.update({str(i):i for i in range(10)})
 ANY_TO_NUM.update({i:i for i in range(10)})
+
+SYMBOLS = set(printable)-set(ascii_letters)
 
 def diff(x, y):
     return abs(int(x)-int(y))
